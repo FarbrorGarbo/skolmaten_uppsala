@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Scrapar skolmatsmenyn och genererar JSON för OpenEPaperLink",
   "type": "module",
-  "scripts": {
-    "generate": "ts-node src/generatejsonuppsala.ts"
-  },
+ "scripts": {
+  "build": "tsc",
+  "generate": "node dist/generatejsonuppsala.js"
+},
   "engines": {
     "node": ">=20"
   },
