@@ -1,0 +1,38 @@
+[
+  {
+    "textbox": [
+      10,
+      4,
+      366,
+      30,
+      "Lunch: söndag: ",
+      "fonts/calibrib30",
+      2,
+      1.2
+    ]
+  },
+  {
+    "textbox": [
+      10,
+      39,
+      366,
+      86,
+      "Ingen meny tillgänglig",
+      "fonts/bahnschrift20",
+      1,
+      1.2
+    ]
+  },
+  {
+    "textbox": [
+      10,
+      130,
+      366,
+      48,
+      "Tomorrow: måndag 15 dec\nBlodpudding och lingonsylt\n\n",
+      "fonts/tahoma11",
+      1,
+      1.2
+    ]
+  }
+]
