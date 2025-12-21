@@ -2,21 +2,21 @@ name: Generate Lunch JSON
 
 on:
   schedule:
-    - cron: '0 3 * * *' # Kör varje dag 03:00 UTC
+    - cron: '0 3 * * *'   # 03:00 UTC ≈ 05:00 svensk tid
   workflow_dispatch:
 
 jobs:
-  build:
+  generate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: Checkout main
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '20'
 
       - name: Install dependencies
         run: npm ci
@@ -24,11 +24,11 @@ jobs:
       - name: Generate lunch JSON
         run: npm run generate
 
-      - name: Commit & push PNG to gh-pages
+      - name: Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -B gh-pages
-          git add lunchuppdala.png
-          git commit -m "updated lunch json"
-          git push -f origin gh-pages
+
+          git add lunchuppsala.json
+          git diff --cached --quiet || git commit -m "Update lunch menu"
+          git push

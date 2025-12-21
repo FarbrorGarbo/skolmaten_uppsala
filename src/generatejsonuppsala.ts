@@ -4,6 +4,7 @@ import * as fs from "fs";
 import * as cheerio from "cheerio";
 
 let dayName = "";
+let todayHeading = "";
 
 async function main() {
     // Fetch the page containing the weekly menu
@@ -13,16 +14,19 @@ async function main() {
     const $ = cheerio.load(html);
 
     // Calculate todays date
-    let today = new Date().toLocaleDateString("sv-SE", { weekday: "long" });
+    const now = new Date(
+        new Date().toLocaleString("en-US", { timeZone: "Europe/Stockholm" })
+    );
+    let today = now.toLocaleDateString("sv-SE", { weekday: "long" });
     let todaysMenu = "";
     let foundMenu = false;
     // console.log($.html());
-
+console.log(today);
     $(".weeklymenu--dailymenu").each((_i, el) => {
         dayName = $(el).find(".weeklymenu--date").text().trim().toLowerCase();
-
+console.log(dayName);
         if (dayName.includes(today)) {
-            today = dayName;
+            todayHeading = dayName;
             $(el).find("li").each((_j, li) => {
                 const typeOfDish = $(li).find(".weeklymenu--typeofdish").text().trim();
                 if (typeOfDish === "Dagens rätt" || typeOfDish === "Dagens alternativ") {
@@ -35,7 +39,7 @@ async function main() {
 
     if (!todaysMenu) todaysMenu = "Ingen meny tillgänglig";
 
-    const tomorrowDate = new Date();
+    const tomorrowDate = now;
     tomorrowDate.setDate(tomorrowDate.getDate() + 1);
 
     // Tomorrow
@@ -63,7 +67,7 @@ async function main() {
 
     const data = [
         {
-            textbox: [10, 4, 366, 30, `Lunch: ${today}: ${dayName}`, "fonts/calibrib30", 2, 1.2]
+            textbox: [10, 4, 366, 30, `Lunch: ${today}: ${todayHeading}`, "fonts/calibrib30", 2, 1.2]
         },
         {
             textbox: [10, 39, 366, 86, todaysMenu, "fonts/bahnschrift20", 1, 1.2]
@@ -75,7 +79,7 @@ async function main() {
 
     fs.writeFileSync("lunchuppsala.json", JSON.stringify(data, null, 2));
     console.log(data);
-    console.log("lunch.json genererad!");
+    // console.log("lunch.json genererad!");
 }
 
 main().catch(console.error);

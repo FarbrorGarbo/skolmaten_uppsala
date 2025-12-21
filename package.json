@@ -1,13 +1,13 @@
 {
   "name": "skolmat-epaper",
   "version": "1.0.0",
-  "description": "Scrapar skolmatsmenyn och genererar PNG för OpenEPaperLink",
+  "description": "Scrapar skolmatsmenyn och genererar JSON för OpenEPaperLink",
   "type": "module",
   "scripts": {
-    "generate": "ts-node src/generateImage.ts"
+    "generate": "ts-node src/generatejsonuppsala.ts"
   },
   "engines": {
-    "node": ">=24.0.0"
+    "node": ">=20"
   },
   "dependencies": {
     "cheerio": "1.0.0-rc.12",
