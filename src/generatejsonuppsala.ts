@@ -81,7 +81,7 @@ async function main() {
     if (tomorrowsMenu === "") {
         tomorrowsMenu = tomorrowHeading + "\n\nIngen meny tillgänglig";
     } else {
-        tomorrowsMenu = tomorrowHeading + tomorrowsMenu;
+        tomorrowsMenu = tomorrowHeading + "\n" + tomorrowsMenu;
     }
 
     const data = [
