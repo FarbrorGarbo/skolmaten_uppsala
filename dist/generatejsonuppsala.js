@@ -13,6 +13,7 @@ function formatDateYYYYMMDD() {
 }
 
 async function main() {
+    // Get today date
     const dateAsString = formatDateYYYYMMDD();
     const url =
   "https://maltidsservice.uppsala.se/OpenMealBlock/GetMeals/" +
