@@ -86,7 +86,7 @@ async function main() {
 
     const data = [
         {
-            textbox: [10, 4, 366, 30, `Lunchmeny: ${todayHeading}`, "fonts/calibrib30", 2, 1.2]
+            textbox: [10, 4, 366, 30, `Lunchmeny: ${todayHeading}`, "fonts/calibrib30", 3, 1.2]
         },
         {
             textbox: [10, 39, 366, 86, todaysMenu, "fonts/bahnschrift20", 1, 1.2]
